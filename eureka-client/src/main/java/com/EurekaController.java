@@ -39,6 +39,8 @@ public class EurekaController {
 
         long dateTime = bean.getDateTime();
 
+
+
         ResultBean resultBean = new ResultBean();
         resultBean.setDateTime( dateTime );
 
