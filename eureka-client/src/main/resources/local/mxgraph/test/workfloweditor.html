@@ -1,0 +1,104 @@
+<html>
+<head>
+	<title>mxGraph Workflow Example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style type="text/css" media="screen">
+		div.base {
+			position: absolute;
+			overflow: hidden;
+			font-family: Arial;
+			font-size: 8pt;
+		}
+		div.base#graph {
+			border-style: solid;
+			border-color: #F2F2F2;
+			border-width: 1px;
+			background: url('images/grid.gif');
+		}
+	</style>
+	<script type="text/javascript">
+		mxBasePath = '../src';
+		mxLanguage = 'zh';
+	</script>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../src/js/mxClient.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript">
+		mxGraph.prototype.htmlLabels = true;
+	
+		mxGraph.prototype.isWrapping = function(cell)
+		{
+			return true;
+		};
+		
+		mxConstants.DEFAULT_HOTSPOT = 1;
+		
+		// Enables guides
+		mxGraphHandler.prototype.guidesEnabled = true;
+		
+	    // Alt disables guides
+	    mxGuide.prototype.isEnabledForEvent = function(evt)
+	    {
+	    	return !mxEvent.isAltDown(evt);
+	    };
+		
+		// Enables snapping waypoints to terminals
+		mxEdgeHandler.prototype.snapToTerminals = true;
+
+		window.onbeforeunload = function() { return mxResources.get('changesLost'); };
+		//createEditor('config/my-workfloweditor.xml');
+
+		$(document).ready(function(){
+
+			//添加自定义线条类
+			mxCellRenderer.registerShape("myLine", myLine);
+			console.log(mxCellRenderer.defaultShapes);
+
+			var config = "config/my-workfloweditor.xml";
+			mxObjectCodec.allowEval = true;
+			var node = mxUtils.load(config).getDocumentElement();
+			var editor = new mxEditor(node);
+			mxObjectCodec.allowEval = false;
+
+			console.log(editor.actions);
+
+			editor.addAction("myJSfunction",function (editor) {
+				alert("自定义js方法");
+			});
+
+			var hideSplash = function () {
+				var splash = document.getElementById('splash');
+
+				if (splash != null) {
+					try {
+						mxEvent.release(splash);
+						mxEffects.fadeOut(splash, 100, true);
+					}
+					catch (e) {
+						splash.parentNode.removeChild(splash);
+					}
+				}
+			}
+			hideSplash();
+		});
+
+
+	</script>
+</head>
+<body >
+	<table id="splash" width="100%" height="100%"
+		style="background:white;position:absolute;top:0px;left:0px;z-index:4;">
+		<tr>
+			<td align="center" valign="middle">
+				<img src="images/loading.gif">
+			</td>
+		</tr>
+	</table>
+	<div id="graph" class="base">
+		<!-- Graph Here -->
+	</div>
+	<div id="status" class="base" align="right" style="white-space:nowrap;">
+		<!-- Status Here -->
+	</div>
+</body>
+</html>

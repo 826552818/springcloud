@@ -1,0 +1,195 @@
+<mxEditor>
+
+    <ui>
+        <stylesheet name="css/process.css"/>
+        <resource basename="resources/app"/>
+        <add as="graph" element="graph"
+             style="left:70px;right:20px;top:20px;bottom:40px"/>
+        <add as="status" element="status"
+             style="height:20px;bottom:20px;left:20px;right:20px"/>
+        <add as="toolbar" x="16" y="20" width="50"
+             style="padding:5px;padding-top:8px;padding-right:0px;"/>
+    </ui>
+
+    <mxGraph as="graph" alternateEdgeStyle="verticalEdge" dropEnabled="1">
+        <mxStylesheet as="stylesheet">
+            <!-- 图片自定义 -->
+            <add as="mySymbol">
+                <add as="shape" value="image"/>
+                <add as="perimeter" value="rectanglePerimeter"/>
+                <add as="labelBackgroundColor" value="white"/>
+                <add as="fontSize" value="fontSize"/>
+                <add as="align" value="center"/>
+                <add as="verticalAlign" value="top"/>
+                <add as="verticalLabelPosition" value="bottom"/>
+            </add>
+            <!-- 画图自定义 -->
+            <add as="ellipse">
+                <add as="shape" value="ellipse"/>
+                <add as="perimeter" value="ellipsePerimeter"/>
+                <add as="labelBackgroundColor" value="white"/>
+                <add as="fontSize" value="10"/>
+                <add as="align" value="center"/>
+                <add as="verticalAlign" value="top"/>
+                <add as="verticalLabelPosition" value="bottom"/>
+            </add>
+            <add as="text">
+                <add as="shape" value="rectangle"/>
+                <add as="perimeter" value="rectanglePerimeter"/>
+                <add as="fontSize" value="12"/>
+                <add as="align" value="left"/>
+                <add as="verticalAlign" value="top"/>
+                <add as="shadow" value="0"/>
+                <add as="strokeColor" value="none"/>
+                <add as="fillColor" value="none"/>
+                <add as="gradientColor" value="none"/>
+            </add>
+            <!-- 默认边界 -->
+            <add as="defaultEdge">
+                <add as="shape" value="connector"/>
+                <add as="fontSize" value="10"/>
+                <add as="align" value="center"/>
+                <add as="verticalAlign" value="middle"/>
+                <add as="rounded" value="1"/>
+                <add as="labelBackgroundColor" value="white"/>
+                <add as="strokeColor" value="#36393D"/>
+                <add as="strokeWidth" value="1"/>
+                <add as="edgeStyle" value="elbowEdgeStyle"/>
+                <add as="endArrow" value="classic"/>
+            </add>
+            <!-- 默认点 -->
+            <add as="defaultVertex" extend="text">
+                <add as="shape" value="rectangle"/>
+                <add as="fontSize" value="11"/>
+                <add as="align" value="center"/>
+                <add as="verticalAlign" value="middle"/>
+                <add as="shadow" value="1"/>
+                <add as="strokeColor" value="#C3D9FF"/>
+                <add as="fillColor" value="#C3D9FF"/>
+                <add as="gradientColor" value="white"/>
+            </add>
+            <!-- 线的样式 -->
+            <add as="verticalEdge">
+                <add as="elbow" value="vertical"/>
+            </add>
+            <add as="straightEdge" extend="defaultEdge">
+                <add as="shape" value="connector"/>
+                <add as="endArrow" value="classic"/>
+            </add>
+            <add as="myLineEdge">
+                <add as="shape" value="myLine"/>
+                <add as="fillColor" value="red"/>
+            </add>
+            <add as="arrowEdge">
+                <add as="shape" value="arrow"/>
+                <add as="fillColor" value="red"/>
+            </add>
+            <!-- 圆角 -->
+            <add as="rounded">
+                <!-- Use 0 (default) for non-rounded or 1 for rounded -->
+                <add as="rounded" value="1"/>
+            </add>
+            <!-- 星型 -->
+            <add as="rhombus">
+                <add as="shape" value="rhombus"/>
+                <add as="perimeter" value="rhombusPerimeter"/>
+            </add>
+            <!-- 直角 -->
+            <add as="rectangle">
+                <add as="shape" value="rectangle"/>
+                <add as="perimeter" value="rectanglePerimeter"/>
+            </add>
+        </mxStylesheet>
+    </mxGraph>
+
+    <!-- 自定义模版 -->
+    <Array as="templates">
+        <!-- 使用图片进行组装 -->
+        <add as="myTemplateSymbol">
+            <myTemplateSymbol id="id" label="label">
+                <mxCell vertex="1" style="mySymbol;image=images/symbols/event.png;fontSize=20">
+                    <mxGeometry as="geometry" width="32" height="32"/>
+                </mxCell>
+            </myTemplateSymbol>
+        </add>
+        <!-- 直接画多边形进行组装 -->
+        <add as="shape">
+            <Shape label="" description="" href="">
+                <mxCell vertex="1" style="ellipse">
+                    <mxGeometry as="geometry" width="60" height="60"/>
+                </mxCell>
+            </Shape>
+        </add>
+        <add as="subprocess">
+            <Subprocess label="Subprocess" description="" href="">
+                <mxCell vertex="1" style="rounded">
+                    <mxGeometry as="geometry" width="60" height="60"/>
+                </mxCell>
+            </Subprocess>
+        </add>
+    </Array>
+
+    <!-- 标签mxDefaultToolbar为默认的工具条 as指明绑定页面的元素-->
+    <mxDefaultToolbar as="toolbar">
+        <!-- 添加工具按钮 xml方法进行编写-->
+        <add as="xml自定义方法" action="myXMLfunction" icon="images/save.gif"/>
+        <!-- 通过js完成 自定义方法的编写 -->
+        <add as="js自定义方法" action="myJSfunction" icon="images/save.gif"/>
+        <br/>
+        <hr/>
+        <add as="select" mode="select" icon="images/select.gif"/>
+        <add as="pan" mode="pan" icon="images/pan.gif"/>
+        <!-- 边界垂直连线 -->
+        <add as="connect" mode="connect" icon="images/connect.gif"><![CDATA[
+		function (editor)
+		{
+			if ( editor.graph.stylesheet != null)
+			{
+
+			    var verticalEdgeStyle = editor.graph.stylesheet.styles.myLineEdge;
+
+			    console.log(editor.graph.stylesheet.styles.defaultEdge);
+				editor.graph.stylesheet.styles.defaultEdge = verticalEdgeStyle;
+				 console.log(editor.graph.stylesheet.styles.defaultEdge);
+			}
+
+		}
+	    ]]></add>
+        <add as="connect" mode="connect" icon="images/straight.gif"><![CDATA[
+		function (editor)
+		{
+
+			if ( editor.graph.stylesheet != null)
+			{
+
+			    var verticalEdgeStyle = editor.graph.stylesheet.styles.arrowEdge;
+
+			    console.log(editor.graph.stylesheet.styles.defaultEdge);
+				editor.graph.stylesheet.styles.defaultEdge = verticalEdgeStyle;
+				 console.log(editor.graph.stylesheet.styles.defaultEdge);
+			}
+
+		}
+	    ]]></add>
+        <br/>
+        <hr/>
+        <add as="自定义模版" template="myTemplateSymbol"
+             style="mySymbol;image=images/symbols/event.png;fontSize=20"
+             icon="images/symbols/small_event.gif"/>
+        <add as="Ellipse" template="shape" style="ellipse" icon="images/ellipse.gif"/>
+        <add as="Rhombus" template="shape" style="rhombus" icon="images/rhombus.gif"/>
+        <add as="Subprocess" template="subprocess" icon="images/rounded.gif"/>
+        <add as="rectangle" template="shape" style="rectangle" icon="images/rounded.gif"/>
+    </mxDefaultToolbar>
+    <!-- 自定义方法 -->
+    <Array as="actions">
+        <add as="myXMLfunction"><![CDATA[
+		function(cell)
+		{
+			alert("xml自定义方法编写");
+		}
+	    ]]></add>
+    </Array>
+
+
+</mxEditor>

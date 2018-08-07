@@ -1,0 +1,67 @@
+<mxGraphModel>
+    <root>
+        <!--<Workflow label="MyWorkflow" description="" id="0"/>
+        <Layer label="Default Layer" description="">
+            <mxCell parent="0" connectable="0" vertex="1">
+
+            </mxCell>
+        </Layer>-->
+
+        <Workflow label="MyWorkflow" description="" id="0" vertex="1"/>
+        <Layer label="Default Layer" description="" id="1">
+            <mxCell parent="0" connectable="0" />
+        </Layer>
+        <app appId="appNs" appName="" protocol="" ip="" port="" context="" heartBeatUrl="" id="2">
+            <mxCell style="verticalLabelPosition=top;verticalAlign=bottom;shadow=1;fillColor=#FFFFFF" vertex="1"
+                    connectable="0" parent="0" type="app">
+                <mxGeometry x="100" y="320" width="20" height="40" as="geometry"/>
+            </mxCell>
+        </app>
+        <app label="symb" customAttribute="whatever" id="3">
+            <mxCell parent="0" connectable="0" vertex="1" type="app">
+                <mxGeometry as="geometry" x="20" y="20" width="22" height="90"/>
+            </mxCell>
+        </app>
+
+
+        <!--<mxCell id="0"/>-->
+        <!--<Workflow label="MyWorkflow" description="" id="4"/>-->
+        <!--<mxCell id="1" parent="0" connectable="0" vertex="1"/>-->
+        <!--<Layer label="Default Layer" description="" id="1">
+            <mxCell parent="0" connectable="0" vertex="1"/>
+        </Layer>-->
+
+        <!--<text label="Default Layer text" description="" id="1">
+            <mxCell parent="0" connectable="0" vertex="0">
+                <mxGeometry as="geometry" x="20" y="20" width="220" height="90"/>
+            </mxCell>
+        </text>-->
+
+        <!--<Symbol label="Default Layer" description="" id="5">
+            <mxCell parent="4" connectable="0" vertex="1"/>
+        </Symbol>
+        <app appId="appNs" appName="" protocol="" ip="" port="" context="" heartBeatUrl="" id="2">
+            <mxCell style="verticalLabelPosition=top;verticalAlign=bottom;shadow=1;fillColor=#FFFFFF" vertex="1"
+                    connectable="0" parent="5" type="app">
+                <mxGeometry x="150" y="320" width="20" height="40" as="geometry"/>
+            </mxCell>
+        </app>-->
+
+
+        <!--<mxCell id="0"/>
+        <mxCell id="1" parent="0" connectable="0" vertex="1"/>
+
+        <app appId="appNs" appName="" protocol="" ip="" port="" context="" heartBeatUrl="" id="2">
+            <mxCell style="verticalLabelPosition=top;verticalAlign=bottom;shadow=1;fillColor=#FFFFFF" vertex="1"
+                    connectable="0" parent="1" type="app">
+                <mxGeometry x="100" y="320" width="20" height="40" as="geometry"/>
+            </mxCell>
+        </app>
+        <app label="symb" customAttribute="whatever" id="3">
+            <mxCell parent="1" connectable="0" vertex="1" type="app">
+                <mxGeometry as="geometry" x="20" y="20" width="22" height="90"/>
+            </mxCell>
+        </app>-->
+
+    </root>
+</mxGraphModel>
